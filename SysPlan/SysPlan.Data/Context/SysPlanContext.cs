@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using SysPlan.Core.Interface;
 using SysPlan.Data.Entities;
-using SysPlan.Data.Interface;
 
 namespace SysPlan.Data.Context
 {

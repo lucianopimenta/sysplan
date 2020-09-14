@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SysPlan.Application\SysPlan.Application.csproj" />
+    <ProjectReference Include="..\SysPlan.Core\SysPlan.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SysPlan.Core.Controller;
 
 namespace SysPlan.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FilmeController : ControllerBase
+    public class FilmeController : BaseController
     {
     }
 }

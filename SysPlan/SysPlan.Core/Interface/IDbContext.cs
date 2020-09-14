@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SysPlan.Data.Interface
+namespace SysPlan.Core.Interface
 {
     public interface IDbContext
     {

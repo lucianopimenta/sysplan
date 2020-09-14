@@ -1,8 +1,8 @@
-﻿using SysPlan.Application.Entity;
+﻿using SysPlan.Core.Entity;
 
 namespace SysPlan.Data.Entities
 {
-    public class Filme: Entity
+    public class Filme: EntityBase
     {
         public string Catalogo { get; set; }
         public string Nome { get; set; }

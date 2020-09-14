@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SysPlan.Application.Entity
+namespace SysPlan.Core.Entity
 {
     public abstract class Entity : IEquatable<Entity>
     {

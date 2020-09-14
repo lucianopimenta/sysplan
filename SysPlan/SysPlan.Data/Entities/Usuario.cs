@@ -1,8 +1,8 @@
-﻿using SysPlan.Application.Entity;
+﻿using SysPlan.Core.Entity;
 
 namespace SysPlan.Data.Entities
 {
-    public class Usuario: Entity
+    public class Usuario: EntityBase
     {
         public string Login { get; set; }
         public string Senha { get; set; }
