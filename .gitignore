@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/SysPlan/SysPlan.API/bin/Debug/netcoreapp3.1
+/SysPlan/SysPlan.API/obj
+/SysPlan/SysPlan.Application/obj
+/SysPlan/SysPlan.Application/bin/Debug/netstandard2.0
+/SysPlan/SysPlan.Data/bin/Debug/netstandard2.0
+/SysPlan/SysPlan.Data/obj
