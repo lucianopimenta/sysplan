@@ -66,13 +66,16 @@ namespace SysPlan.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Filtro(string nome)
         {
             try
             {
                 JArray json = new JArray();
 
-                _repositoryFilme.GetAll().OrderBy(x => x.Nome).ToList().ForEach(filme =>
+                if (nome == null)
+                    nome = string.Empty;
+
+                _repositoryFilme.Get(x => x.Nome.ToUpper().Contains(nome.ToUpper())).OrderBy(x => x.Nome).ToList().ForEach(filme =>
                 {
                     JObject obj =
                        new JObject(

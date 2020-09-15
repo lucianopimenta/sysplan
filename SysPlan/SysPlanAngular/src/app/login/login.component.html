@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="auth-content">
+      <div class="card">
+        <div class="row align-items-center text-center">
+          <div class="col-md-12">
+            <div class="card-body">
+              <h4 class="mb-3 f-w-400">Locadora SysPlan</h4>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="email" class="form-control" placeholder="Login" [(ngModel)]="login">
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha">
+              </div>
+              <button class="btn btn-block btn-primary mb-4" (click)="onLogin()">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

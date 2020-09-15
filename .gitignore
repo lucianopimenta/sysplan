@@ -11,3 +11,5 @@
 /SysPlan/SysPlan.Data/obj
 /SysPlan/SysPlan.Core/bin/Debug/netstandard2.0
 /SysPlan/SysPlan.Core/obj
+/SysPlan/.vs/SysPlan/DesignTimeBuild
+/SysPlan/.vs/SysPlan/config

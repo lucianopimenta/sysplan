@@ -1,0 +1,18 @@
+<div class="container-fluid" style="padding-top: 80px;">
+
+    <!-- Resources -->
+    <h2>Locadora SysPlan</h2>
+    <p>Acesse o link para carregar a lista de filmes. Ou use o logout para sair do app.</p>
+  
+    <div class="card-container">
+      <a href="#" [routerLink]="['/filme']" routerLinkActive="router-link-active" >
+        <span>Filmes</span>
+      </a>
+      <br/>
+    </div>
+
+    <div class="card-container">
+      <button class="btn btn-outline-default" (click)="logout()">Logout</button>
+    </div>
+  
+  </div>

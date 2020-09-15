@@ -1,0 +1,46 @@
+@import '../node_modules/@syncfusion/ej2-base/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap4.css';  
+@import '../node_modules/@syncfusion/ej2-lists/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-angular-grids/styles/bootstrap4.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/bootstrap4.css';
+
+/* You can add global styles to this file, and also import other style files */
+/* TOASTR BUGFIX */
+#toast-container > div {
+    opacity: 1;
+  }
+  .toast {
+    font-size: initial !important;
+    border: initial !important;
+    backdrop-filter: blur(0) !important;
+  }
+  .toast-success {
+    background-color: #51A351 !important;
+  }
+  .toast-error {
+    background-color: #BD362F !important;
+  }
+  .toast-info {
+    background-color: #2F96B4 !important;
+  }
+  .toast-warning {
+    background-color: #F89406 !important;
+  }
+
+  
+.pointer {
+  cursor: pointer;
+}
+
+@import '../node_modules/angular2-toaster/src/toaster.scss';  
+// main framework
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// bootstrap
+@import "~bootstrap/scss/bootstrap";
