@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -7,6 +7,7 @@ import { Filme } from './filme.model';
 import { FilmeService } from './filme.service';
 import { SearchSettingsModel } from '@syncfusion/ej2-grids';
 import { DataManager } from '@syncfusion/ej2-data';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-filme',
@@ -14,7 +15,6 @@ import { DataManager } from '@syncfusion/ej2-data';
     providers: []
   })
   export class FilmeComponent {
-    @ViewChild('myPersistenceModal') myModal;
     public entity: Filme = new Filme();
     public edicao: boolean = false;
 
@@ -31,7 +31,8 @@ import { DataManager } from '@syncfusion/ej2-data';
       public _service: FilmeService, 
       public _alert: AlertService, 
       private formBuilder: FormBuilder,
-      private spinnerService: NgxSpinnerService) {
+      private spinnerService: NgxSpinnerService,
+      private modalService: NgbModal) {
      }
   
     ngOnInit() {
@@ -67,22 +68,22 @@ import { DataManager } from '@syncfusion/ej2-data';
       this._router.navigate(['/dashboard']);
     }
 
-    new(){
+    new(content){
       this.entity = new Filme();
       this.edicao = false;
-      this.myModal.show();
-    }
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    }  
   
     //#endregion
     
     get f() { return this.registerForm.controls; }
     
     //#region Cadastro
-    openModal(codigo: number){
+    openModal(codigo: number, content){
       this._service.get(codigo).then(result =>{
           this.entity = result;
           this.edicao = true;
-          this.myModal.show();
+          this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
       })
     }
 
@@ -95,7 +96,7 @@ import { DataManager } from '@syncfusion/ej2-data';
         return;
       }
   
-      //se for inserção, coloca Guid empty nos códigos
+      //se for inserção, coloca ) no código
       if (!this.edicao) {
         this.entity.Codigo = 0;
       }
@@ -104,8 +105,8 @@ import { DataManager } from '@syncfusion/ej2-data';
       this._service.save(this.entity).then(result => {
         if (result.success){
           this.spinnerService.hide();
-          this.myModal.hide();
           this._alert.success("Registro salvo com sucesso.");
+          this.modalService.dismissAll();
           this.load();
         }
         else{

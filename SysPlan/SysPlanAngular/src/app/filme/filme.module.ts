@@ -6,6 +6,7 @@ import { AuthGuard } from '../core/helper/auth.guard';
 import { FilmeComponent } from './filme.component';
 import { FilmeService } from './filme.service';
 import { GridModule, PageService, SortService, FilterService, GroupService, AggregateService  } from '@syncfusion/ej2-angular-grids';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -15,12 +16,16 @@ import { GridModule, PageService, SortService, FilterService, GroupService, Aggr
         { path: '', component: FilmeComponent, canActivate: [AuthGuard] },
       ]), 
       CommonModule,
-      GridModule
+      GridModule,
+      NgbModule
     ],
     declarations: [
       FilmeComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA ],
-    providers: [FilmeService, PageService, SortService, FilterService, GroupService, AggregateService]
+    providers: [FilmeService, PageService, SortService, 
+      FilterService, 
+      GroupService, 
+      AggregateService]
   })
   export class FilmeModule { }

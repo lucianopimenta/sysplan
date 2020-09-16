@@ -1,5 +1,21 @@
-<div class="container-fluid" style="padding-top: 80px;">
+<div class="container-fluid" style="padding-top: 20px;">
   
+  <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-2">
+          <a class="pointer" (click)="back()"><img src="../../assets/images/back.png" style="width: 30px; height: 30px" alt="Voltar"/></a>
+        </div>
+        <div class="col-sm-10 center-block text-center">
+          <h4>Cadastro de filmes</h4>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <hr>
+      </div>
+  </div>
+</div>
+<br/>
   <div class="col-md-12">
     <h5>Filtros</h5>
     <div class="row">
@@ -21,8 +37,8 @@
         <div class="col-sm-3">
             <div class="form-group">
                 <br/>
-                <button class="btn btn-outline-default" (click)="back()">Voltar</button>&nbsp;&nbsp;
-                <button class="btn btn-outline-primary" (click)="new()">Novo</button>
+                <!-- <button class="btn btn-outline-default" (click)="back()">Voltar</button>&nbsp;&nbsp; -->
+                <button class="btn btn-outline-primary" (click)="new(mymodal)">Novo</button>
             </div>
         </div>
     </div>
@@ -35,7 +51,7 @@
                   <e-column field='Codigo' headerText='Código' width=30></e-column>  
                   <e-column headerText='Nome' textAlign='left' width=150>
                         <ng-template #template let-data>
-                            <a class="pointer" (click)="openModal(data.Codigo);" style="text-decoration: underline; color: #4099ff;">{{data.Nome}}</a>
+                          <a class="pointer" (click)="openModal(data.Codigo, mymodal);" style="text-decoration: underline; color: #4099ff;">{{data.Nome}}</a>
                         </ng-template>
                     </e-column>
                     <e-column field='Ano' headerText='Ano' width=50></e-column>
@@ -54,105 +70,109 @@
                 </e-columns>
             </ejs-grid>
 
-
-            <app-ui-modal #myPersistenceModal [containerClick]="false" [dialogClass]="'modal-dialog-centered modal-lg'">
-              <div class="app-modal-header">
-                <h5 class="modal-title">Filme</h5>
-                <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="myPersistenceModal.hide()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+            <ng-template #mymodal let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Filme</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">×</span></button>
               </div>
-              <div class="app-modal-body">
-          
-                  <div class="container-fluid">
-                    <form [formGroup]="registerForm">
-                        <div class="row">
-                          <div class="col-md-12">
-                              <div class="form-group">
-                                  <label for="zipcode">Nome</label>
-                                  <input type="text" formControlName="Nome" class="form-control" [(ngModel)]="entity.Nome"
-                                    [ngClass]="{ 'is-invalid': submitted && f.Nome.errors }">
-                                  <div *ngIf="submitted && f.Nome.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Nome.errors.required">Nome é obrigatório</div>
-                                  </div>
-                              </div>
-                          </div>                            
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                              <div class="form-group">
-                                  <label for="zipcode">Catalogo</label>
-                                  <input type="text" formControlName="Catalogo" class="form-control" [(ngModel)]="entity.Catalogo"
-                                  [ngClass]="{ 'is-invalid': submitted && f.Catalogo.errors }">
-                                  <div *ngIf="submitted && f.Catalogo.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Catalogo.errors.required">Catalogo é obrigatório</div>
-                                  </div>
-                              </div>
-                          </div>                            
-                        </div>
-                        <div class="row">
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <form [formGroup]="registerForm">
+                      <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="zipcode">Visão geral</label>
-                                <input type="text" formControlName="VisaoGeral" class="form-control" [(ngModel)]="entity.VisaoGeral"
-                                [ngClass]="{ 'is-invalid': submitted && f.VisaoGeral.errors }">
-                                  <div *ngIf="submitted && f.VisaoGeral.errors" class="invalid-feedback">
-                                      <div *ngIf="f.VisaoGeral.errors.required">Visão geral é obrigatório</div>
-                                  </div>
+                                <label for="zipcode">Nome</label>
+                                <input type="text" formControlName="Nome" class="form-control" [(ngModel)]="entity.Nome"
+                                  [ngClass]="{ 'is-invalid': submitted && f.Nome.errors }">
+                                <div *ngIf="submitted && f.Nome.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Nome.errors.required">Nome é obrigatório</div>
+                                </div>
                             </div>
                         </div>                            
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="zipcode">Imagem</label>
-                                  <input type="text" formControlName="Imagem" class="form-control" [(ngModel)]="entity.Imagem"
-                                  [ngClass]="{ 'is-invalid': submitted && f.Imagem.errors }">
-                                  <div *ngIf="submitted && f.Imagem.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Imagem.errors.required">Imagem é obrigatória</div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="zipcode">Slogan</label>
-                                  <input type="text" formControlName="Slogan" class="form-control" [(ngModel)]="entity.Slogan"
-                                  [ngClass]="{ 'is-invalid': submitted && f.Slogan.errors }">
-                                  <div *ngIf="submitted && f.Slogan.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Slogan.errors.required">Slogan é obrigatório</div>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
+                      </div>
                       <div class="row">
-                          <div class="col-md-4">
-                              <div class="form-group">
-                                  <label for="zipcode">Classificação</label>
-                                  <input type="text" formControlName="Classificacao" class="form-control" [(ngModel)]="entity.Classificacao"
-                                  [ngClass]="{ 'is-invalid': submitted && f.Classificacao.errors }">
-                                  <div *ngIf="submitted && f.Classificacao.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Classificacao.errors.required">Classificação é obrigatório</div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="zipcode">Ano</label>
-                                <input type="text" formControlName="Ano" class="form-control" [(ngModel)]="entity.Ano"
-                                [ngClass]="{ 'is-invalid': submitted && f.Ano.errors }">
-                                  <div *ngIf="submitted && f.Ano.errors" class="invalid-feedback">
-                                      <div *ngIf="f.Ano.errors.required">Ano é obrigatório</div>
-                                  </div>
+                                <label for="zipcode">Catalogo</label>
+                                <input type="text" formControlName="Catalogo" class="form-control" [(ngModel)]="entity.Catalogo"
+                                [ngClass]="{ 'is-invalid': submitted && f.Catalogo.errors }">
+                                <div *ngIf="submitted && f.Catalogo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Catalogo.errors.required">Catalogo é obrigatório</div>
+                                </div>
+                            </div>
+                        </div>                            
+                      </div>
+                      <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="zipcode">Visão geral</label>
+                              <input type="text" formControlName="VisaoGeral" class="form-control" [(ngModel)]="entity.VisaoGeral"
+                              [ngClass]="{ 'is-invalid': submitted && f.VisaoGeral.errors }">
+                                <div *ngIf="submitted && f.VisaoGeral.errors" class="invalid-feedback">
+                                    <div *ngIf="f.VisaoGeral.errors.required">Visão geral é obrigatório</div>
+                                </div>
+                          </div>
+                      </div>                            
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="zipcode">Imagem</label>
+                                <input type="text" formControlName="Imagem" class="form-control" [(ngModel)]="entity.Imagem"
+                                [ngClass]="{ 'is-invalid': submitted && f.Imagem.errors }">
+                                <div *ngIf="submitted && f.Imagem.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Imagem.errors.required">Imagem é obrigatória</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="zipcode">Preeview</label>
+                              <img style="width: 200px; height: 200px" [attr.src]="entity.Imagem">
                             </div>
                         </div>
                       </div>
-                      </form>
-                  </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="zipcode">Slogan</label>
+                              <input type="text" formControlName="Slogan" class="form-control" [(ngModel)]="entity.Slogan"
+                              [ngClass]="{ 'is-invalid': submitted && f.Slogan.errors }">
+                              <div *ngIf="submitted && f.Slogan.errors" class="invalid-feedback">
+                                  <div *ngIf="f.Slogan.errors.required">Slogan é obrigatório</div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="zipcode">Classificação</label>
+                                <input type="text" formControlName="Classificacao" class="form-control" [(ngModel)]="entity.Classificacao"
+                                [ngClass]="{ 'is-invalid': submitted && f.Classificacao.errors }">
+                                <div *ngIf="submitted && f.Classificacao.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Classificacao.errors.required">Classificação é obrigatório</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="zipcode">Ano</label>
+                              <input type="text" formControlName="Ano" class="form-control" [(ngModel)]="entity.Ano"
+                              [ngClass]="{ 'is-invalid': submitted && f.Ano.errors }">
+                                <div *ngIf="submitted && f.Ano.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Ano.errors.required">Ano é obrigatório</div>
+                                </div>
+                          </div>
+                      </div>
+                    </div>
+                    </form>
+                </div>
               </div>
-              <div class="app-modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="myPersistenceModal.hide()">Fechar</button>&nbsp;
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="modal.dismiss()">Fechar</button>&nbsp;
                 <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
               </div>
-            </app-ui-modal>
-      
+            </ng-template>
+
 </div>

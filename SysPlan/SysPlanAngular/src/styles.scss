@@ -8,6 +8,16 @@
 @import '../node_modules/@syncfusion/ej2-lists/styles/bootstrap4.css';
 @import '../node_modules/@syncfusion/ej2-angular-grids/styles/bootstrap4.css';
 @import '../node_modules/@syncfusion/ej2-calendars/styles/bootstrap4.css';
+// @import '../node_modules/@syncfusion/ej2-icons/styles/bootstrap4s.css';
+
+
+#dialog-container {
+  display: block;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}
 
 /* You can add global styles to this file, and also import other style files */
 /* TOASTR BUGFIX */
